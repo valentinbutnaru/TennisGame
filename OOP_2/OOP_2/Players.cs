@@ -6,25 +6,23 @@ using System.Threading.Tasks;
 
 namespace OOP_2
 {
-    class Players : IPlayer
+    class Players
     {
-        private int player_score = 0;
+        private int player_score;
         private string name;
         public Players (string n)
         {
             name = n;
         }
-        public void setScore(int point)
+        public string Name
         {
-            player_score += point;
+            get { return name; }
+            set { name = value; }
         }
-        public int getScore()
+        public int Player_Score
         {
-            return player_score;
-        }     
-        public int Point()
-        {
-            return 1;
+            get { return player_score; }
+            set { player_score=value; }
         }
     }
 }

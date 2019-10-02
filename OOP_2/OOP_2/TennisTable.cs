@@ -17,18 +17,18 @@ namespace OOP_2
         }
         public void WonPoint(string PlayerName)
         {
-            if (PlayerName == "player1")
-                player1.setScore(player1.Point());
+            if (PlayerName == player1.Name)
+                player1.Player_Score++;
             else
-                player2.setScore(player2.Point());
+                player2.Player_Score++;
         }
         public string getFinalResult()
         {
-            if (player1.getScore() == player2.getScore())
-                return getSame(player1.getScore());
-            else if (player1.getScore() >= 4 || player2.getScore() >= 4)
-                return getResult(player1.getScore(), player2.getScore());
-            return actualScore(player1.getScore(), player2.getScore());           
+            if (player1.Player_Score == player2.Player_Score)
+                return getSame(player1.Player_Score);
+            else if (player1.Player_Score >= 4 || player2.Player_Score >= 4)
+                return getResult(player1.Player_Score, player2.Player_Score);
+            return actualScore(player1.Player_Score, player2.Player_Score);           
         }
     }
 }
