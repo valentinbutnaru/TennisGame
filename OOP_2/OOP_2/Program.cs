@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Autofac;
 
 namespace OOP_2
 {
@@ -10,15 +7,14 @@ namespace OOP_2
     {
         static void Main(string[] args)
         {
-            var game = new TennisTable("player1", "player2");
-            string[] points = { "player1", "player1", "player2", "player2", "player1", "player1" };
-            for (var i = 0; i < 6; i++)
-            {
-                game.WonPoint(points[i]);
-                Console.WriteLine("Score: {0}", game.getFinalResult());
-            }
+            var container = ContainerConfigure.Configure();
 
-            Console.ReadKey();
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var app = scope.Resolve<IApplication>();
+                app.Run();
+            }
+                Console.ReadKey();
         }
     }
 }

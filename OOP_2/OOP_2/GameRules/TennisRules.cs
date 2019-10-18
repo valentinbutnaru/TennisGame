@@ -6,68 +6,63 @@ using System.Threading.Tasks;
 
 namespace OOP_2
 {
-    class TennisGame:IGame
+    public class TennisRules : ITennisRules
     {
-        private string result ;
-        public string Result
-        {
-            get { return result; }
-            set { result = value; }
-        }
+        public  string Result { get; set; }
         public string getResult(int player_score1,int player_score2)
         {
             var minusResult = player_score1-player_score2;
-            if (minusResult == 1) result = "Advantage player1";
-            else if (minusResult == -1) result = "Advantage player2";
-            else if (minusResult >= 2) result = "Win for player1";
-            else result = "Win for player2";
-            return result;
+            if (minusResult == 1) Result = "Advantage player1";
+            else if (minusResult == -1) Result = "Advantage player2";
+            else if (minusResult >= 2) Result = "Win for player1";
+            else Result = "Win for player2";
+            return Result;
         }
         public  string getSame(int players_score)
         {
             switch (players_score)
             {
                 case 0:
-                    result = "Love-All";
+                    Result = "Love-All";
                     break;
                 case 1:
-                    result = "Fifteen-All";
+                    Result = "Fifteen-All";
                     break;
                 case 2:
-                    result = "Thirty-All";
+                    Result = "Thirty-All";
                     break;
                 default:
-                    result = "Deuce";
+                    Result = "Deuce";
                     break;
 
             }
-            return result;
+            return Result;
         }
         public  string actualScore(int player_score1,int player_score2)
         {
-            result = "";
+            Result = "";
             int tempScore;
             for (var i = 1; i < 3; i++)
             {
                 if (i == 1) tempScore = player_score1;
-                else { result += "-"; tempScore = player_score2; }
+                else { Result += "-"; tempScore = player_score2; }
                 switch (tempScore)
                 {
                     case 0:
-                        result += "Love";
+                        Result += "Love";
                         break;
                     case 1:
-                        result += "Fifteen";
+                        Result += "Fifteen";
                         break;
                     case 2:
-                        result += "Thirty";
+                        Result += "Thirty";
                         break;
                     case 3:
-                        result += "Forty";
+                        Result += "Forty";
                         break;
                 }
             }
-            return result;
+            return Result;
         }
     }
 }
