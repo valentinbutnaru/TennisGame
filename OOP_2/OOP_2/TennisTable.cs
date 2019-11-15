@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOP_2
 {
-    class TennisTable:TennisGame
+    class TennisTable
     {
+        private readonly IGame result;
         protected Players player1;
         protected Players player2;
         public TennisTable (string p1,string p2)
@@ -25,10 +26,10 @@ namespace OOP_2
         public string getFinalResult()
         {
             if (player1.Player_Score == player2.Player_Score)
-                return getSame(player1.Player_Score);
+                return result.getSame(player1.Player_Score);
             else if (player1.Player_Score >= 4 || player2.Player_Score >= 4)
-                return getResult(player1.Player_Score, player2.Player_Score);
-            return actualScore(player1.Player_Score, player2.Player_Score);           
+                return result.getResult(player1.Player_Score, player2.Player_Score);
+            return result.actualScore(player1.Player_Score, player2.Player_Score);           
         }
     }
 }
