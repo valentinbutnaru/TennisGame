@@ -6,3 +6,4 @@ before build:
 build:
  verbosity:minimal
  publish_wap:true
+ project: OOP_2.sln
