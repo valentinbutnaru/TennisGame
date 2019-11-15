@@ -6,4 +6,4 @@ before build:
 build:
  verbosity:minimal
  publish_wap:true
- project: OOP_2.sln
+ project: TennisGame\OOP_2\OOP_2.sln
