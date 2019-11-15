@@ -1,8 +1,8 @@
-version: 1.0.{build}
+version:  MSBuild 2003
 branches:
   only:
   - /\d*\.\d*\.\d*/
-image: Visual Studio 2015
+image: Visual Studio 2019
 configuration: Release
 platform: Any CPU
 assembly_info:
