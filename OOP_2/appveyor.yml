@@ -1,21 +1,6 @@
-image: Visual Studio 2017 RC
-# configuration for "master" branch
--
-  branches:
-    only:
-      - master
-  configuration: Release
-  before_build:
-    - ps: nuget restore .\OOP_2.sln
-  build:
-    project: .\OOP_2.sln
-# configuration for all other branches except "master"
--
-  branches:
-    except:
-      - master
-  configuration: Test
-  before_build:
-    - ps: nuget restore .\OOP_2.sln
-  build:
-    project: .\OOP_2.sln
+version: 1.0.{build}
+build:
+  project: OOP_2\OOP_2.sln
+  publish_nuget: true
+  publish_core_console: true
+  verbosity: minimal
