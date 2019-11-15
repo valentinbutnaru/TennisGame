@@ -1,7 +1,0 @@
-version: 1.0.{build}
-
-build:
-  -project: OOP_2\OOP_2.sln
-  -publish_nuget: true
-  -publish_core_console: true
-  -verbosity: minimal
