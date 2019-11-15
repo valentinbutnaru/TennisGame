@@ -4,3 +4,5 @@ build:
   publish_nuget: true
   publish_core_console: true
   verbosity: minimal
+image:
+  -Visual Studio 2019
