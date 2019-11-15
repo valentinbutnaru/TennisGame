@@ -1,9 +1,34 @@
+version: 1.0.{build}
+branches:
+  only:
+  - /\d*\.\d*\.\d*/
+image: Visual Studio 2015
 configuration: Release
-
-before build:
- - nuget resotre
-
-build:
- verbosity:minimal
- publish_wap:true
- project: TennisGame\OOP_2\OOP_2.sln
+platform: Any CPU
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+init:
+- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+- ps: >-
+      if ($env:APPVEYOR_REPO_TAG -eq "true")
+       {
+         $version = "$env:APPVEYOR_REPO_TAG_NAME.$env:APPVEYOR_BUILD_NUMBER"
+         Write-Host "Setting version to $version"
+         Update-AppveyorBuild -Version "$version"
+       }
+       else
+       {
+         $version = "$env:APPVEYOR_BUILD_VERSION"
+         Write-Host "Setting version to $version because there is no tag"
+         Update-AppveyorBuild -Version "$version"
+       }
+before_build:
+- cmd: nuget restorebuild:
+  project: My.Solution.sln
+  publish_nuget: true
+  publish_nuget_symbols: true
+  verbosity: minimal
